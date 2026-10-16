@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guiones Reels Altamira Legal</title>
+<style>/* Layout: una columna de lectura, barra fija arriba, cards por reel; marca Altamira dorado/tinta */
+:root{
+  --bg:#f6f3ec; --surface:#ffffff; --fg:#1c1c1e; --muted:#6b6b70; --line:#e4dfd2;
+  --gold:#c8a04a; --gold-deep:#8a6d1f; --ink:#0a0a0a; --ink-fg:#ffffff; --ink-soft:#d8d8d8;
+  --ok:#2f7a4d; --edit:rgba(200,160,74,.14); --edit-focus:rgba(200,160,74,.24);
+  --font:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#141311; --surface:#1e1c18; --fg:#ece7da; --muted:#a39d8f; --line:#2f2c25;
+  --gold:#d6b25e; --gold-deep:#d6b25e; --ink:#000000; --ink-fg:#ffffff; --ink-soft:#c9c4b6;
+  --ok:#7fc89a; --edit:rgba(214,178,94,.14); --edit-focus:rgba(214,178,94,.26); color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#141311; --surface:#1e1c18; --fg:#ece7da; --muted:#a39d8f; --line:#2f2c25;
+  --gold:#d6b25e; --gold-deep:#d6b25e; --ink:#000000; --ink-fg:#ffffff; --ink-soft:#c9c4b6;
+  --ok:#7fc89a; --edit:rgba(214,178,94,.14); --edit-focus:rgba(214,178,94,.26); color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:15px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ink)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--ink);color:var(--ink-fg)}
+.bar-in{display:flex;align-items:center;gap:12px;flex-wrap:wrap;max-width:860px;margin:0 auto;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.bar .t{font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:11px;color:var(--gold);flex:1;min-width:0}
+.bar button{background:var(--gold);color:var(--ink);border:0;padding:9px 16px;border-radius:4px;font-weight:800;cursor:pointer;font-size:13px;font-family:inherit}
+.bar button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.bar button:disabled{opacity:.6;cursor:default}
+.bar button.dirty{box-shadow:0 0 0 2px var(--ink),0 0 0 4px var(--gold)}
+.status{font-size:12px;color:var(--ink-soft)}
+.status.ok{color:var(--gold)}
+.page{max-width:860px;margin:0 auto;padding-block:32px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1{font-size:clamp(24px,5vw,32px);font-weight:800;margin:0 0 6px;text-wrap:balance;line-height:1.15}
+.sub{color:var(--muted);margin:0 0 10px}
+.hint{font-size:12px;color:var(--muted);margin:0 0 28px;padding:10px 14px;border:1px dashed var(--line);border-radius:4px}
+h2.pilar{font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-deep);border-bottom:3px solid var(--gold);padding-bottom:8px;margin:40px 0 16px;text-wrap:balance}
+.card{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:6px;padding:18px 20px;margin:0 0 16px;min-width:0}
+.code{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:var(--gold-deep)}
+.card h3{margin:2px 0 4px;font-size:19px;font-weight:800;line-height:1.25}
+.who{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:10px}
+.hook{background:var(--ink);color:var(--ink-fg);padding:14px 16px;border-radius:4px;margin:10px 0 14px}
+.hook small{display:block;color:var(--gold);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px}
+.hook .h1{font-size:17px;font-weight:700;line-height:1.35}
+.hook .h2{color:var(--ink-soft);font-size:14px;margin-top:6px}
+.beat{display:grid;grid-template-columns:100px minmax(0,1fr);gap:12px;padding:9px 0;border-top:1px dotted var(--line)}
+.beat b{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.beat.cierre b{color:var(--gold-deep)}
+.f{min-width:0;overflow-wrap:anywhere}
+[contenteditable]{outline:none;border-radius:3px;transition:background .15s;cursor:text}
+[contenteditable]:hover{background:var(--edit)}
+[contenteditable]:focus{background:var(--edit-focus);box-shadow:0 0 0 2px var(--gold)}
+.hook [contenteditable]:hover{background:rgba(255,255,255,.08)}
+.hook [contenteditable]:focus{background:rgba(255,255,255,.12)}
+@media (max-width:600px){.beat{grid-template-columns:1fr;gap:4px}.card{padding:16px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="bar-in"><div class="t">Altamira Legal · Guiones de reels</div><button id="save" type="button">Guardar cambios</button><span id="status" class="status"></span></div></header>
+<main class="page">
+<h1 class="f" data-k="titulo" data-root="1" contenteditable="true">Guiones de Reels — Altamira Legal</h1>
+<p class="sub f" data-k="sub" data-root="1" contenteditable="true">12 reels levantando objeciones. Estructura: hook (texto en pantalla) → validación → giro → cierre. Escritos para decirse en voz alta: se pueden recortar, no suavizar.</p>
+<p class="hint" id="hint">Tocá cualquier texto para editarlo y pulsá “Guardar cambios”. Los cambios se guardan en el servidor y los ve todo el que abra esta página, desde cualquier dispositivo.</p>
+<div id="cards">
+<h2 class="pilar">Pilar 1 — El mito de “Hacienda no se entera”</h2><article class="card" data-i="0"><div class="code">Reel 01</div>
+<h3 class="f" data-k="titulo" contenteditable="true">El convenio de doble imposición</h3>
+<div class="who f" data-k="quien" contenteditable="true">Karima o dúo · Corte de YouTube disponible</div>
+<div class="hook"><small>Hook · texto en pantalla</small><div class="h1 f" data-k="hook1" contenteditable="true">“Emiratos NO es un paraíso fiscal.”</div><div class="h2 f" data-k="hook2" contenteditable="true">Y eso, para ti, es una mala noticia.</div></div>
+<div class="beat"><b>Validación</b><div class="f" data-k="validacion" contenteditable="true">Mucha gente monta la sociedad, abre la cuenta ahí y piensa: listo, Hacienda ya no se entera de nada.</div></div>
+<div class="beat"><b>Giro</b><div class="f" data-k="giro" contenteditable="true">España y Emiratos tienen firmado un convenio de doble imposición. Eso significa que se intercambian información cuando lo consideran. Que tú tengas una empresa en Emiratos o en cualquier tercer país no quiere decir que Hacienda no tenga esa información. La tiene. Por eso lo primero que miramos no es la free zone: es si el convenio aplica a tu caso y cómo.</div></div>
+<div class="beat cierre"><b>Cierre</b><div class="f" data-k="cierre" contenteditable="true">Hay estrategias correctas que reducen la carga fiscal. Esconderse no es una de ellas. Diagnóstico en el link.</div></div>
+</article>
+<article class="card" data-i="1"><div class="code">Reel 02</div>
+<h3 class="f" data-k="titulo" contenteditable="true">Los 4 años</h3>
+<div class="who f" data-k="quien" contenteditable="true">Karima o dúo · Corte de YouTube disponible</div>
+<div class="hook"><small>Hook · texto en pantalla</small><div class="h1 f" data-k="hook1" contenteditable="true">“Te fuiste a Dubái en 2026. Hacienda te puede llamar en 2030.”</div><div class="h2 f" data-k="hook2" contenteditable="true">Y si hay fraude, en cualquier momento.</div></div>
+<div class="beat"><b>Validación</b><div class="f" data-k="validacion" contenteditable="true">Los síntomas de una mala decisión fiscal no salen al momento. Al principio todo parece que funciona.</div></div>
+<div class="beat"><b>Giro</b><div class="f" data-k="giro" contenteditable="true">Hacienda puede abrir una inspección hasta 4 años después. Eso en un caso normal. Si hay indicios de fraude fiscal o un tema penal, no hay límite. Por eso cuando hacemos una ruta fiscal no la hacemos para el año que viene: la hacemos para que aguante a medio y largo plazo, cuando ya nadie se acuerda de quién te la montó.</div></div>
+<div class="beat cierre"><b>Cierre</b><div class="f" data-k="cierre" contenteditable="true">Si tu estructura solo funciona mientras nadie mira, no es una estructura. Link en bio.</div></div>
+</article>
+<article class="card" data-i="2"><div class="code">Reel 03</div>
+<h3 class="f" data-k="titulo" contenteditable="true">La moda de las LLC</h3>
+<div class="who f" data-k="quien" contenteditable="true">Karima · A cámara</div>
+<div class="hook"><small>Hook · texto en pantalla</small><div class="h1 f" data-k="hook1" contenteditable="true">“Tienes un restaurante en Valencia y una LLC en Delaware.”</div><div class="h2 f" data-k="hook2" contenteditable="true">Enhorabuena: tienes un problema, no una estructura.</div></div>
+<div class="beat"><b>Validación</b><div class="f" data-k="validacion" contenteditable="true">Hubo una moda, y sigue, de montar LLCs en Estados Unidos para todo. Se vendía como si fuera magia.</div></div>
+<div class="beat"><b>Giro</b><div class="f" data-k="giro" contenteditable="true">Una LLC no cambia dónde está tu actividad real. Si el negocio está en España, con clientes en España y tú en España, la LLC no te quita ni un euro de impuestos. Te añade una obligación más y, si la usas para facturar lo de aquí, un riesgo penal. Es desconocimiento fiscal vendido como estrategia.</div></div>
+<div class="beat cierre"><b>Cierre</b><div class="f" data-k="cierre" contenteditable="true">Antes de montar nada fuera, que alguien mire qué tienes dentro. Diagnóstico gratis en el link.</div></div>
+</article>
+<h2 class="pilar">Pilar 2 — Lo que no te cuenta quien te vende la empresa</h2><article class="card" data-i="3"><div class="code">Reel 04 · Abre la serie</div>
+<h3 class="f" data-k="titulo" contenteditable="true">Del 52% al 21% sin irse de España</h3>
+<div class="who f" data-k="quien" contenteditable="true">Dúo · Corte de YouTube disponible</div>
+<div class="hook"><small>Hook · texto en pantalla</small><div class="h1 f" data-k="hook1" contenteditable="true">“Pagaba el 52%. Hoy paga el 21%. Y sigue viviendo en España.”</div><div class="h2 f" data-k="hook2" contenteditable="true">Caso real de este año.</div></div>
+<div class="beat"><b>Validación</b><div class="f" data-k="validacion" contenteditable="true">Nos dijo lo que dice todo el mundo: “como sigo siendo residente fiscal en España, tengo que seguir pagando esto”. Y no es así.</div></div>
+<div class="beat"><b>Giro</b><div class="f" data-k="giro" contenteditable="true">No todo el mundo tiene que irse a Dubái. Hay rutas estratégicas que reducen la carga fiscal siendo residente en España, con un paso a paso, según tu situación y tu objetivo. No es un truco, es planificación. Lo que no existe es la cifra mágica sin ver el caso: a él le salió el 21%, a ti te puede salir otra cosa o puede que no te compense tocar nada.</div></div>
+<div class="beat cierre"><b>Cierre</b><div class="f" data-k="cierre" contenteditable="true">Si crees que tu única opción es irte o seguir pagando lo mismo, hay una tercera. Link en bio.</div></div>
+</article>
+<article class="card" data-i="4"><div class="code">Reel 05</div>
+<h3 class="f" data-k="titulo" contenteditable="true">La cuenta bancaria bloqueada</h3>
+<div class="who f" data-k="quien" contenteditable="true">Karima · A cámara</div>
+<div class="hook"><small>Hook · texto en pantalla</small><div class="h1 f" data-k="hook1" contenteditable="true">“Una empresa en Dubái sin cuenta bancaria no es una empresa.”</div><div class="h2 f" data-k="hook2" contenteditable="true">Es un papel bonito.</div></div>
+<div class="beat"><b>Validación</b><div class="f" data-k="validacion" contenteditable="true">Nos llegan cada semana: les abrieron la empresa en días y llevan meses con la cuenta bloqueada o sin cuenta.</div></div>
+<div class="beat"><b>Giro</b><div class="f" data-k="giro" contenteditable="true">Emiratos no es un paraíso fiscal, tiene su normativa, y los bancos la aplican con lupa. Mainland, free zone u offshore no son lo mismo ante el banco. Y desde el primer euro, dólar o dirham que se mueve entre países tiene que haber trazabilidad y compliance bien hecho. Si no, bloqueo. Por eso la cuenta la trabajamos contigo, no te damos un formulario.</div></div>
+<div class="beat cierre"><b>Cierre</b><div class="f" data-k="cierre" contenteditable="true">Si ya tienes la empresa y la cuenta atascada, también lo miramos. Link en bio.</div></div>
+</article>
+<article class="card" data-i="5"><div class="code">Reel 06</div>
+<h3 class="f" data-k="titulo" contenteditable="true">¿Persona física o sociedad?</h3>
+<div class="who f" data-k="quien" contenteditable="true">Dúo · Corte de YouTube disponible</div>
+<div class="hook"><small>Hook · texto en pantalla</small><div class="h1 f" data-k="hook1" contenteditable="true">“Si el que te vende el piso en Dubái no te ha hecho esta pregunta, huye.”</div><div class="h2 f" data-k="hook2" contenteditable="true">¿Compras como persona física o con una sociedad?</div></div>
+<div class="beat"><b>Validación</b><div class="f" data-k="validacion" contenteditable="true">Es lógico que nadie te la haga: al que te vende rentabilidad le da igual cómo tributes después.</div></div>
+<div class="beat"><b>Giro</b><div class="f" data-k="giro" contenteditable="true">Es una pregunta básica y cambia todo: cómo tributa el alquiler, cómo tributa la venta, qué pasa con tu patrimonial en España, cómo repatrías el dinero. La gran mayoría de estructuras terminan con inmuebles. Por eso en Altamira el derecho inmobiliario y el fiscal van en el mismo equipo: Jesús lo uno, Karima lo otro, y el caso lo miramos juntos.</div></div>
+<div class="beat cierre"><b>Cierre</b><div class="f" data-k="cierre" contenteditable="true">Antes de reservar, una llamada. Link en bio.</div></div>
+</article>
+<article class="card" data-i="6"><div class="code">Reel 07</div>
+<h3 class="f" data-k="titulo" contenteditable="true">¿0% de verdad para una empresa que importa y exporta?</h3>
+<div class="who f" data-k="quien" contenteditable="true">Karima · A cámara</div>
+<div class="hook"><small>Hook · texto en pantalla</small><div class="h1 f" data-k="hook1" contenteditable="true">“¿Se puede pagar 0% en Emiratos importando y exportando?”</div><div class="h2 f" data-k="hook2" contenteditable="true">Depende de tres cosas que nadie te dice.</div></div>
+<div class="beat"><b>Validación</b><div class="f" data-k="validacion" contenteditable="true">El titular que ves es “0% de impuestos”. El titular es incompleto.</div></div>
+<div class="beat"><b>Giro</b><div class="f" data-k="giro" contenteditable="true">Desde 2023 Emiratos tiene impuesto de sociedades: 0% hasta un umbral y 9% por encima, con exenciones según el caso. El IVA es del 5%, frente al 21% de España. Pero en importación y exportación la pieza que lo cambia todo es la aduanera. Una operación que pasa por dos o tres países con intermediación se analiza entera, no solo el tipo impositivo de destino.</div></div>
+<div class="beat cierre"><b>Cierre</b><div class="f" data-k="cierre" contenteditable="true">Si tu negocio mueve mercancía entre países, tráelo al diagnóstico. Link en bio.</div></div>
+</article>
+<h2 class="pilar">Pilar 3 — Para quien juega en otro nivel</h2><article class="card" data-i="7"><div class="code">Reel 08</div>
+<h3 class="f" data-k="titulo" contenteditable="true">La holding en Dubái como fondo indexado</h3>
+<div class="who f" data-k="quien" contenteditable="true">Jesús o dúo · Corte de YouTube disponible</div>
+<div class="hook"><small>Hook · texto en pantalla</small><div class="h1 f" data-k="hook1" contenteditable="true">“5 millones: 3 en República Dominicana, 2 en Dubái. Una sola matriz.”</div><div class="h2 f" data-k="hook2" contenteditable="true">Así se estructura cuando se hace bien.</div></div>
+<div class="beat"><b>Validación</b><div class="f" data-k="validacion" contenteditable="true">Esto ya no es para todo el mundo. Es para quien tiene varias sociedades o inversiones en varios países y las lleva por separado.</div></div>
+<div class="beat"><b>Giro</b><div class="f" data-k="giro" contenteditable="true">Una sociedad base en Dubái que actúa como holding, y de ella cuelgan sociedades en los países donde operas: República Dominicana, Paraguay, España. Es como tener un fondo indexado: cada pieza separada y correcta, pero una sola fuente de inversión aprovechando la fiscalidad de la matriz. Y con protección jurídica detrás, no solo fiscal.</div></div>
+<div class="beat cierre"><b>Cierre</b><div class="f" data-k="cierre" contenteditable="true">Si tienes patrimonio en más de un país y nadie te ha dibujado esto, link en bio.</div></div>
+</article>
+<article class="card" data-i="8"><div class="code">Reel 09</div>
+<h3 class="f" data-k="titulo" contenteditable="true">Proteger el patrimonio: trusts</h3>
+<div class="who f" data-k="quien" contenteditable="true">Jesús · A cámara</div>
+<div class="hook"><small>Hook · texto en pantalla</small><div class="h1 f" data-k="hook1" contenteditable="true">“Tener una sociedad no protege tu patrimonio.”</div><div class="h2 f" data-k="hook2" contenteditable="true">Lo organiza. Protegerlo es otra cosa.</div></div>
+<div class="beat"><b>Validación</b><div class="f" data-k="validacion" contenteditable="true">Mucha gente con una patrimonial en España cree que ya está cubierta.</div></div>
+<div class="beat"><b>Giro</b><div class="f" data-k="giro" contenteditable="true">Cuando la estructura crece, la pregunta deja de ser cuánto pagas y pasa a ser qué pasa si algo sale mal: una reclamación, un divorcio, una sucesión. Ahí entran figuras como el trust, que separan el patrimonio de la persona con reglas claras. No es para todos, y montarlo mal es peor que no tenerlo.</div></div>
+<div class="beat cierre"><b>Cierre</b><div class="f" data-k="cierre" contenteditable="true">Si tu patrimonio ya es de los que hay que proteger, hablemos. Link en bio.</div></div>
+</article>
+<article class="card" data-i="9"><div class="code">Reel 10</div>
+<h3 class="f" data-k="titulo" contenteditable="true">Ley Beckham y nómada digital: la vuelta</h3>
+<div class="who f" data-k="quien" contenteditable="true">Karima · A cámara</div>
+<div class="hook"><small>Hook · texto en pantalla</small><div class="h1 f" data-k="hook1" contenteditable="true">“Estuvo 5 años en Emiratos, vendió y volvió a España pagando menos.”</div><div class="h2 f" data-k="hook2" contenteditable="true">Legal. Y planificado desde el día uno.</div></div>
+<div class="beat"><b>Validación</b><div class="f" data-k="validacion" contenteditable="true">Todo el mundo habla de irse. Casi nadie planifica volver.</div></div>
+<div class="beat"><b>Giro</b><div class="f" data-k="giro" contenteditable="true">Hay regímenes en España que la gente no conoce: la llamada Ley Beckham para quien vuelve tras años fuera, el régimen de nómada digital. Cada uno aplica a una tipología y a una profesión concreta. Una ruta fiscal seria incluye el retorno, no solo la salida.</div></div>
+<div class="beat cierre"><b>Cierre</b><div class="f" data-k="cierre" contenteditable="true">Si estás pensando en irte, piensa también en cómo vuelves. Link en bio.</div></div>
+</article>
+<h2 class="pilar">Pilar 4 — Por qué nosotros</h2><article class="card" data-i="10"><div class="code">Reel 11</div>
+<h3 class="f" data-k="titulo" contenteditable="true">“Si no te lo aplicas, no lo vendas”</h3>
+<div class="who f" data-k="quien" contenteditable="true">Jesús · A cámara</div>
+<div class="hook"><small>Hook · texto en pantalla</small><div class="h1 f" data-k="hook1" contenteditable="true">“He visto despachos que vendían empresas y al mes vendían pisos.”</div><div class="h2 f" data-k="hook2" contenteditable="true">En Dubái. El mismo despacho.</div></div>
+<div class="beat"><b>Validación</b><div class="f" data-k="validacion" contenteditable="true">Hay escasez de profesionales de habla hispana aquí, y eso atrae a quien se reinventa cada trimestre.</div></div>
+<div class="beat"><b>Giro</b><div class="f" data-k="giro" contenteditable="true">Nosotros no ofrecimos fiscalidad hasta tener equipo fiscal propio. Y lo que recomendamos lo aplicamos: import-export, operaciones inmobiliarias, estructuras propias. Si lo que le recomiendas a tus clientes no te lo aplicas tú, ¿cómo lo ofreces? Los que desaparecen cuando llega el problema son los que nunca se jugaron nada.</div></div>
+<div class="beat cierre"><b>Cierre</b><div class="f" data-k="cierre" contenteditable="true">Las referencias nos vienen del boca a boca. Comprueba por qué. Link en bio.</div></div>
+</article>
+<article class="card" data-i="11"><div class="code">Reel 12</div>
+<h3 class="f" data-k="titulo" contenteditable="true">“La fiscalidad internacional no es solo para multinacionales”</h3>
+<div class="who f" data-k="quien" contenteditable="true">Karima · Corte de YouTube disponible</div>
+<div class="hook"><small>Hook · texto en pantalla</small><div class="h1 f" data-k="hook1" contenteditable="true">“Pensaba que la fiscalidad internacional era solo para multinacionales.”</div><div class="h2 f" data-k="hook2" contenteditable="true">Y trabajaba en una.</div></div>
+<div class="beat"><b>Validación</b><div class="f" data-k="validacion" contenteditable="true">Es lo que piensa todo el mundo: eso es para grandes empresas, no para mí.</div></div>
+<div class="beat"><b>Giro</b><div class="f" data-k="giro" contenteditable="true">Empecé en el departamento fiscal de una multinacional, haciendo rutas fiscales para holdings, aperturas, ventas de empresas. Hice el máster de fiscalidad internacional porque quería entender el caso a caso. Y en Dubái, sentada con un abogado emiratí, vi que las mismas estrategias servían para empresarios normales: una sucesión, un patrimonio, una empresa que vende fuera. Por eso estoy aquí.</div></div>
+<div class="beat cierre"><b>Cierre</b><div class="f" data-k="cierre" contenteditable="true">El diagnóstico lo hago yo. Link en bio.</div></div>
+</article>
+</div>
+</main>
+<script>(function(){
+  var saveBtn = document.getElementById("save");
+  var statusEl = document.getElementById("status");
+  var dirty = false;
+
+  function setStatus(msg, kind){ statusEl.textContent = msg; statusEl.className = "status" + (kind ? " " + kind : ""); }
+  function text(el){
+    var t = el.innerText != null ? el.innerText : el.textContent;
+    return t.replace(/ /g, " ").replace(/\r/g, "").replace(/\n{3,}/g, "\n\n").trim();
+  }
+  function collect(){
+    var s = { reels: [] };
+    document.querySelectorAll(".f[data-root]").forEach(function(el){ s[el.dataset.k] = text(el); });
+    document.querySelectorAll(".card").forEach(function(card){
+      var i = +card.dataset.i; s.reels[i] = {};
+      card.querySelectorAll(".f").forEach(function(el){ s.reels[i][el.dataset.k] = text(el); });
+    });
+    return s;
+  }
+  function apply(s){
+    if (!s || !Array.isArray(s.reels)) return;
+    document.querySelectorAll(".f[data-root]").forEach(function(el){ if (s[el.dataset.k] != null) el.innerText = s[el.dataset.k]; });
+    document.querySelectorAll(".card").forEach(function(card){
+      var r = s.reels[+card.dataset.i]; if (!r) return;
+      card.querySelectorAll(".f").forEach(function(el){ if (r[el.dataset.k] != null) el.innerText = r[el.dataset.k]; });
+    });
+  }
+  function markDirty(){ if (!dirty){ dirty = true; saveBtn.classList.add("dirty"); setStatus("Cambios sin guardar"); } }
+  document.addEventListener("input", function(e){ if (e.target.closest && e.target.closest(".f")) markDirty(); });
+  window.addEventListener("beforeunload", function(e){ if (dirty){ e.preventDefault(); e.returnValue = ""; } });
+
+  // Cargar la última versión guardada
+  fetch("/api/guiones", { cache: "no-store" }).then(function(r){
+    if (r.status === 404) { setStatus("Versión inicial"); return null; }
+    if (!r.ok) throw new Error(r.status);
+    return r.json();
+  }).then(function(s){ if (s){ apply(s); setStatus("Última versión cargada"); } })
+    .catch(function(){ setStatus("No se pudo leer el servidor; mostrando la versión inicial"); });
+
+  saveBtn.addEventListener("click", function(){
+    if (!dirty){ setStatus("Sin cambios"); return; }
+    saveBtn.disabled = true; setStatus("Guardando…");
+    fetch("/api/guiones", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(collect()) })
+      .then(function(r){ if (!r.ok) throw new Error(r.status); dirty = false; saveBtn.classList.remove("dirty"); setStatus("Guardado", "ok"); })
+      .catch(function(){ setStatus("No se pudo guardar. Revisá que el Blob store esté conectado al proyecto."); })
+      .then(function(){ saveBtn.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>
