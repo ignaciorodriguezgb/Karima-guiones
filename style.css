@@ -1,0 +1,51 @@
+/* Layout: una columna de lectura, barra fija arriba, cards por reel; marca Altamira dorado/tinta */
+:root{
+  --bg:#f6f3ec; --surface:#ffffff; --fg:#1c1c1e; --muted:#6b6b70; --line:#e4dfd2;
+  --gold:#c8a04a; --gold-deep:#8a6d1f; --ink:#0a0a0a; --ink-fg:#ffffff; --ink-soft:#d8d8d8;
+  --ok:#2f7a4d; --edit:rgba(200,160,74,.14); --edit-focus:rgba(200,160,74,.24);
+  --font:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#141311; --surface:#1e1c18; --fg:#ece7da; --muted:#a39d8f; --line:#2f2c25;
+  --gold:#d6b25e; --gold-deep:#d6b25e; --ink:#000000; --ink-fg:#ffffff; --ink-soft:#c9c4b6;
+  --ok:#7fc89a; --edit:rgba(214,178,94,.14); --edit-focus:rgba(214,178,94,.26); color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#141311; --surface:#1e1c18; --fg:#ece7da; --muted:#a39d8f; --line:#2f2c25;
+  --gold:#d6b25e; --gold-deep:#d6b25e; --ink:#000000; --ink-fg:#ffffff; --ink-soft:#c9c4b6;
+  --ok:#7fc89a; --edit:rgba(214,178,94,.14); --edit-focus:rgba(214,178,94,.26); color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:15px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ink)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--ink);color:var(--ink-fg)}
+.bar-in{display:flex;align-items:center;gap:12px;flex-wrap:wrap;max-width:860px;margin:0 auto;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.bar .t{font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:11px;color:var(--gold);flex:1;min-width:0}
+.bar button{background:var(--gold);color:var(--ink);border:0;padding:9px 16px;border-radius:4px;font-weight:800;cursor:pointer;font-size:13px;font-family:inherit}
+.bar button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.bar button:disabled{opacity:.6;cursor:default}
+.bar button.dirty{box-shadow:0 0 0 2px var(--ink),0 0 0 4px var(--gold)}
+.status{font-size:12px;color:var(--ink-soft)}
+.status.ok{color:var(--gold)}
+.page{max-width:860px;margin:0 auto;padding-block:32px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1{font-size:clamp(24px,5vw,32px);font-weight:800;margin:0 0 6px;text-wrap:balance;line-height:1.15}
+.sub{color:var(--muted);margin:0 0 10px}
+.hint{font-size:12px;color:var(--muted);margin:0 0 28px;padding:10px 14px;border:1px dashed var(--line);border-radius:4px}
+h2.pilar{font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-deep);border-bottom:3px solid var(--gold);padding-bottom:8px;margin:40px 0 16px;text-wrap:balance}
+.card{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:6px;padding:18px 20px;margin:0 0 16px;min-width:0}
+.code{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:var(--gold-deep)}
+.card h3{margin:2px 0 4px;font-size:19px;font-weight:800;line-height:1.25}
+.who{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:10px}
+.hook{background:var(--ink);color:var(--ink-fg);padding:14px 16px;border-radius:4px;margin:10px 0 14px}
+.hook small{display:block;color:var(--gold);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px}
+.hook .h1{font-size:17px;font-weight:700;line-height:1.35}
+.hook .h2{color:var(--ink-soft);font-size:14px;margin-top:6px}
+.beat{display:grid;grid-template-columns:100px minmax(0,1fr);gap:12px;padding:9px 0;border-top:1px dotted var(--line)}
+.beat b{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.beat.cierre b{color:var(--gold-deep)}
+.f{min-width:0;overflow-wrap:anywhere}
+[contenteditable]{outline:none;border-radius:3px;transition:background .15s;cursor:text}
+[contenteditable]:hover{background:var(--edit)}
+[contenteditable]:focus{background:var(--edit-focus);box-shadow:0 0 0 2px var(--gold)}
+.hook [contenteditable]:hover{background:rgba(255,255,255,.08)}
+.hook [contenteditable]:focus{background:rgba(255,255,255,.12)}
+@media (max-width:600px){.beat{grid-template-columns:1fr;gap:4px}.card{padding:16px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}

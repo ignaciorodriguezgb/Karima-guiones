@@ -1,7 +1,7 @@
 // Genera public/index.html a partir de state.json (solo para regenerar; el deploy no lo necesita)
 const fs = require("fs");
 const path = require("path");
-const css = fs.readFileSync(path.join(__dirname, "../guiones/style.css"), "utf8");
+const css = fs.readFileSync(path.join(__dirname, "style.css"), "utf8");
 const state = JSON.parse(fs.readFileSync(path.join(__dirname, "state.json"), "utf8"));
 const PIL = {1:"Pilar 1 — El mito de “Hacienda no se entera”",2:"Pilar 2 — Lo que no te cuenta quien te vende la empresa",3:"Pilar 3 — Para quien juega en otro nivel",4:"Pilar 4 — Por qué nosotros"};
 const esc = s => String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
